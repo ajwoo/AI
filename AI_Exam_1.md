@@ -101,8 +101,8 @@ Greedy will find a solution without ever expanding a node that is not on the sol
 
 A\* evaluates each node by combining the cost to reach the node you are trying to expand to and the heuristic.
 
-![Map](/Users/ajwoo/Desktop/AI_Exam1_Notes/screenshots/map.png)
+![Map](.screenshots/map.png)
 
-![Heuristics](/Users/ajwoo/Desktop/AI_Exam1_Notes/screenshots/heuristics.png)
+![Heuristics](./screenshots/heuristics.png)
 
-![AStar](/Users/ajwoo/Desktop/AI_Exam1_Notes/screenshots/A*.png)
+![AStar](./screenshots/A*.png)
