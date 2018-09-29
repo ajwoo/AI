@@ -93,15 +93,15 @@ Greedy uses the **straight line distance** heuristic. You need to know the strai
 
 Greedy will find a solution without ever expanding a node that is not on the solution path; hence, its search cost is minimal. However the Greedy search will not find the most optimal solution (it just tries to get as close to the goal as it can).
 
-![Heuristics](/Users/ajwoo/Desktop/AI_Exam1_Notes/screenshots/heuristics.png)
+![Heuristics](./screenshots/heuristics.png)
 
-![Greedy](/Users/ajwoo/Desktop/AI_Exam1_Notes/screenshots/Greedy.png)
+![Greedy](./screenshots/Greedy.png)
 
 #### A* Search
 
 A\* evaluates each node by combining the cost to reach the node you are trying to expand to and the heuristic.
 
-![Map](.screenshots/map.png)
+![Map](./screenshots/map.png)
 
 ![Heuristics](./screenshots/heuristics.png)
 
