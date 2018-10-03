@@ -67,6 +67,21 @@ The agent will have to learn how the eviornment works in order to make a good de
 
 ## Graphs
 
+### Local Search
+
+**objective function** defines the best state.
+
+* If elevation corresponds to cost, the aim is to find the lowest valley **global minimum**
+* if the elevation corresponds to an **objective function** then the aim is to find the highest peak or a **global maximum**
+
+![Objective Function](./screenshots/objectiveFunction.png)
+
+### Hill Climbing Search  
+
+This is a loop that continually moves in the direction of increasing value. It terminates when it reaches the peak. The algorithm does not maintain a search tree, so the data structure for the current node only records the value of the objective function.
+
+![Hill Clibming](./screenshots/hillClimb.png)
+
 ### BDF (Breath Depth Search)  
 
 The *shallowest* unexpanded node is chosen for expansion. An appropriate data structrue for the *frontier* would be a *queue*.
@@ -106,3 +121,64 @@ A\* evaluates each node by combining the cost to reach the node you are trying t
 ![Heuristics](./screenshots/heuristics.png)
 
 ![AStar](./screenshots/A*.png)
+
+### Adversarial Search
+
+**Pruning** allows us to ignore portions of the search tree that make no difference to the final chocie when looking for an optimal move.  
+
+**evaluation functions** allow us to approximate the true utility of a state without doing a complete search.
+
+**imerfect information** not all cards are visible to each player (there is an element of chance) 
+
+**game tree** a tree where the nodes are game states and the edges are moves. (for tic tac toe the game tree is relatively small, it has fewer than 9! terminal nodes)
+
+#### Game can be defined as
+
+* S0: the **inital state** which specifies how the game is set up at the start
+* Player(s): Defines which player has to move in a state
+* Action(s): returns the set of legal moves in a state
+* Result(s,a): the **transition model**, which defines the result of a move
+* Terminal-test(s): a **terminal test**, which is true when the game is over and false otherwise. States where the game has ended and called **terminal state**
+* Utility(s,p): a **utility function** defines the final numeric value for a game that ends in terminal state *s* and for player *p*
+
+#### Optimal decisions in games
+
+**minimax decision** is the optimal choice for either Max or Min depending whos turn it is
+
+**minimax algorithm** computes the minimax decision from the current state. it uses a simple recursive computation of the minimax values of each successor state, directly implementing the defining equations.  
+
+* the minimax algorithm performs a complete depth first exploration of the game tree.
+
+#### Alpha-Beta Pruning
+
+**alpha** is the best already explored option along the path to the root for MAX  
+
+**beta** the best already explored option along the path to the root for the MIN  
+
+The search updates the values of alpha and beta as it goes along and prunes the remaning branches. As soon as the value of the current node is known to be worse than the current alpha or beta value it terminates the recursive call.
+
+### Knowledge-Based agens
+
+**knowledge base** is a set of sentences or **axiom**, each sentence is expressed in a lanuguage called **Knowledge representation language** and represents an assertion about the world.  
+
+**knowledge level** is where we specify only what the agent knows and what its goals are  
+
+**declarative approach**  the agent designer can tell sentences one by one until the agent knows how to operate in its enviornment  
+
+**procedural approach** encodes desired behaviors directly as program code.
+
+### The Wumpus World  
+
+**performance measure**: +1000 for climbing out of the cave with the gold, -1000 for falling into a pit or being eaten by the wumpus. -1 for each action taken and -10 for using up the arrows.  
+
+**enviornment**: 4x4 grid of rooms.
+
+**actuators**: the agent can move forward, turn left, and turn right. The agent will die if he enters a square with a pit or runs into the wumpus. The agent will not move if he runs into a wall. The agent can grab if it is in the same square as the gold and can shoot the arrow in a straight line that it is facing.  
+
+**sensors**: the agent has five sensors,
+
+* The agent can smell the wumpus in adjacent squares
+* The agent can feel a breeze if it is adjacent to a pit
+* The agent can perceive glitter if it is in the same square as gold. 
+* When the agent bumps into a wall it precieves a bump
+* when the wumpus is killed it emits a scream
