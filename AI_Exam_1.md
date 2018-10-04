@@ -157,15 +157,43 @@ A\* evaluates each node by combining the cost to reach the node you are trying t
 
 The search updates the values of alpha and beta as it goes along and prunes the remaning branches. As soon as the value of the current node is known to be worse than the current alpha or beta value it terminates the recursive call.
 
-### Knowledge-Based agens
+##### Procedure  
 
-**knowledge base** is a set of sentences or **axiom**, each sentence is expressed in a lanuguage called **Knowledge representation language** and represents an assertion about the world.  
+* You start at the root node, And the value at that node is initalized to its worst case, so the MAX would have a value of -infinity
+* The node then explores its children
+* Since no options have been explored yet, alpha and beta are set to their worst cases, -inf and +inf respectively
+* Once you hit a leafnode you update whatever its parent's value is
+* Once it's value is updated, before it begins to explore it check this condition  
+
+``` python
+if value(currNode) > beta:
+    break
+```
+
+if the current vlaue is greater then beta then it doesn't need to search the other children and that side can be pruned  
+
+* if the MIN is choosing its most optimal choice it would never select the greater value so we can prune that side. In this example 3 will always be picked over 5
+
+![prune](./screenshots/prune.png)
+
+### Knowledge-Based agents
+
+**knowledge base** is a set of sentences or **axiom**, each sentence is expressed in a lanuguage called **Knowledge
+
+* agent *Tells* the KB what it preceives
+* agent *Asks* the KB what action to perform
+* agent *Tells* KB which action was chosen
+* agent executes that action
+
+representation language** and represents an assertion about the world.  
 
 **knowledge level** is where we specify only what the agent knows and what its goals are  
 
 **declarative approach**  the agent designer can tell sentences one by one until the agent knows how to operate in its enviornment  
 
 **procedural approach** encodes desired behaviors directly as program code.
+
+**entailment** a sentence follows another sentence logically. The formal deffinition `is a |= b` if and only if, in everymodel in which *a* is true, *b* is also true
 
 ### The Wumpus World  
 
@@ -182,3 +210,11 @@ The search updates the values of alpha and beta as it goes along and prunes the 
 * The agent can perceive glitter if it is in the same square as gold. 
 * When the agent bumps into a wall it precieves a bump
 * when the wumpus is killed it emits a scream
+
+**proposition symbol** each symbol stands for a proposition that can be true or false.
+
+#### logical connectives
+
+![log](./screenshots/logcon.png)
+![logchart](./screenshots/logicchart.png)
+![logeq](./screenshots/logiceq.png)
